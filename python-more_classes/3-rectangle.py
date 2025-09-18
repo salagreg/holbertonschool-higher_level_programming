@@ -99,7 +99,7 @@ class Rectangle:
         for i in range(self.__height):
             rect.append("#" * self.__width)
         return "\n".join(rect)
-
+        
     def area(self):
         """
         Calculate and return the area of the rectangle.
