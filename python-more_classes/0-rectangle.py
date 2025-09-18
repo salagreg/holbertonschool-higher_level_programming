@@ -3,4 +3,5 @@
 
 
 class Rectangle:
+    """An empty class defines a square"""
     pass
