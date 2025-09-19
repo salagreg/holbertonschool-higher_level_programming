@@ -3,8 +3,22 @@
 
 
 class Rectangle:
-    """Class that defines a rectangle by its width and height."""
+    """
+    Represents a rectangle defined by its width and height.
 
+    This class provides methods to compute the area,
+    and perimeter of the rectangle,
+    display it using a customizable symbol,
+    and keep track of the number of instances.
+
+    Class Attributes:
+        number_of_instances (int): Tracks the number of Rectangle instances.
+        print_symbol (any): Symbol used for string representation ('#').
+
+    Instance Attributes:
+        width (int): The width of the rectangle.
+        height (int): The height of the rectangle.
+    """
     number_of_instances = 0
     print_symbol = "#"
 
@@ -127,6 +141,11 @@ class Rectangle:
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        """ Delete and decremented an instance of rectangle """
+        """
+        Called when a Rectangle instance is about to be destroyed.
+
+        Prints a goodbye message and decrements the class attribute
+        'number_of_instances' to reflect the deletion of the instance.
+        """
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
