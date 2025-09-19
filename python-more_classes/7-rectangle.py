@@ -115,7 +115,7 @@ class Rectangle:
     def __str__(self):
         """
         Return a string representation of the rectangle using the '#'.
-        Replace a character '#' with a public instance attribute 'print_symbol'
+        Uses the 'print_symbol' attribute to draw the rectangle.
 
         Returns:
         str: The rectangle represented with lines of '#' characters.
@@ -125,7 +125,7 @@ class Rectangle:
             return ""
         rect = []
         for i in range(self.__height):
-            rect.append(str(self.print_symbol * self.__width))
+            rect.append(str(self.print_symbol) * self.__width)
         return "\n".join(rect)
 
     def __repr__(self):
@@ -141,11 +141,6 @@ class Rectangle:
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        """
-        Called when a Rectangle instance is about to be destroyed.
-
-        Prints a goodbye message and decrements the class attribute
-        'number_of_instances' to reflect the deletion of the instance.
-        """
+        """ Delete an instance of Rectangle """
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
