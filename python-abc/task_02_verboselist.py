@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 """
-This module defines the `VerboseList` class, which extends Python's
-built-in `list` type.
-The class overrides common list modification methods
-('append', 'extend', 'remove', and 'pop')
-to print descriptive messages whenever these methods are used.
+This module defines the 'VerboseList' class, which extends Python's
+built-in 'list' type.
 """
 
 
@@ -25,7 +22,7 @@ class VerboseList(list):
         Extend the list by appending elements from the iterable,
         with a message.
         """
-        print(f"Extended the list with {list(iterable)} items.")
+        print(f"Extended the list with [{len(iterable)}] items.")
         super().extend(iterable)
 
     def remove(self, item):
