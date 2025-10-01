@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module that return the dictionary description with simple data structure """
+"""Module that return the dictionary description with simple data structure"""
 
 
 def class_to_json(obj):
