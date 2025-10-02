@@ -30,7 +30,7 @@ class CustomObject():
     @classmethod
     def deserialize(cls, filename):
         """Désérialise un objet depuis un fichier binaire
-           et retourne une instance de CustomObject."""
+          et retourne une instance de CustomObject."""
         with open(filename, "rb") as f:
             my_obj = pickle.load(f)
             return my_obj
