@@ -24,13 +24,19 @@ class CustomObject():
 
     def serialize(self, filename):
         """Sérialise l'objet courant dans un fichier binaire avec pickle"""
-        with open(filename, "wb") as f:
-            pickle.dump(self, f)
+        try:
+            with open(filename, "wb") as f:
+                pickle.dump(self, f)
+        except Exception:
+            return None
 
     @classmethod
     def deserialize(cls, filename):
         """Désérialise un objet depuis un fichier binaire
           et retourne une instance de CustomObject."""
-        with open(filename, "rb") as f:
-            my_obj = pickle.load(f)
-            return my_obj
+        try:
+            with open(filename, "rb") as f:
+                my_obj = pickle.load(f)
+                return my_obj
+        except Exception:
+            return None
