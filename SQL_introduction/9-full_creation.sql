@@ -1,3 +1,4 @@
+-- Crée une seconde table dans une base de données
 CREATE TABLE IF NOT EXISTS second_table (
   id INT,
   name VARCHAR(256),
