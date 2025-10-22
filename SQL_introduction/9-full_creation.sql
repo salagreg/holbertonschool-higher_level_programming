@@ -4,9 +4,7 @@ CREATE TABLE IF NOT EXISTS second_table (
   name VARCHAR(256),
   score INT
 );
-
-TRUNCATE TABLE second_table;
-
+-- Insère des valeurs dans une seconde table dans une base de données
 INSERT INTO second_table (id, name, score)
 VALUES
 (1, "John", 10),
