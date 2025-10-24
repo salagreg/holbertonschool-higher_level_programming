@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """ Module qui liste tous les états commmençant par la lettre N,
         dans une base de données MySQL """
 
