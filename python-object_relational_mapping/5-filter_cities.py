@@ -26,15 +26,13 @@ if __name__ == "__main__":
         "JOIN states ON cities.state_id = states.id "
         "WHERE states.name = %s "
         "ORDER BY cities.id ASC"
-    )
+      )
 
-    try:
-        cur = db.cursor()
-        cur.execute(query, (state_name,))
-        rows = cur.fetchall()
-        for row in rows:
-            print(", ".join([row[0] for row in rows]))
+    cur = db.cursor()
+    cur.execute(query, (state_name,))
+    rows = cur.fetchall()
+    for row in rows:
+        print(", ".join([row[0] for row in rows]))
 
-    finally:
         cur.close()
         db.close()
