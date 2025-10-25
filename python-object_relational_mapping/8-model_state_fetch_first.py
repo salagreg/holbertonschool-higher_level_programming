@@ -22,7 +22,9 @@ if __name__ == "__main__":
 
     first_state = session.query(State).order_by(State.id).first()
 
-    for first_state in [first_state]:
+    if first_state:
         print(f"{first_state.id}: {first_state.name}")
+    else:
+        print("None")
 
     session.close()
