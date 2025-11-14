@@ -43,33 +43,60 @@ def items():
 
 @app.route('/products')
 def products():
-    """Récupère les produits depuis un fichier JSON ou CSV
-            selon le paramètre 'source'."""
-    source = request.args.get("source")
 
+    source = request.args.get("source")
+    product_id = request.args.get("id")
+    products_list = []
+    error_message = None
+
+    # Récupère les produits depuis un fichier JSON et les affiche.
     if source == "json":
         try:
             with open("products.json", "r") as file:
-                data = json.load(file)
+                products_list = json.load(file)
         except FileNotFoundError:
-            return "JSON file not found", 404
+            error_message = "JSON file not found"
 
+    # Récupère les produits depuis un fichier CSV et les affiche.
     elif source == "csv":
-        data = []
         try:
             with open("products.csv", newline="", encoding="utf-8") as file:
                 reader = csv.DictReader(file)
                 for row in reader:
                     row["id"] = int(row["id"])
                     row["price"] = float(row["price"])
-                    data.append(row)
+                    products_list.append(row)
         except FileNotFoundError:
-            return "CSV file not found", 404
+            error_message = "CSV file not found"
 
+    # Gestion des erreurs pour une source invalide.
     else:
-        return "Wrong source", 400
+        error_message = "Wrong source"
+        return render_template(
+            "product_display.html",
+            products=None,
+            error=error_message
+        )
 
-    return jsonify(data)
+    # Filtre les produits par ID si un ID est fourni.
+    if product_id:
+        try:
+            product_id = int(product_id)
+            filtered = [p for p in products_list if p["id"] == product_id]
+            if filtered:
+                products_list = filtered
+            else:
+                error_message = "Product not found"
+                products_list = None
+        except ValueError:
+            error_message = "Invalid ID format"
+            products_list = None
+
+    return render_template(
+        "product_display.html",
+        products=products_list,
+        error=error_message
+    )
 
 
 if __name__ == '__main__':

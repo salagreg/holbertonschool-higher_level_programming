@@ -4,22 +4,40 @@
     <title>Products</title>
   </head>
   <body>
-    {% include "header.html" %}
-
-    <h1>Products</h1>
-
-    <!-- Message d'erreur -->
     {% if error %}
-    <p style="color: red">{{ error }}</p>
-    {% endif %}
-
-    <!-- Affichage des produits -->
-    {% if products %}
-    <table border="1" cellpadding="10">
+    <p>{{ error }}</p>
+    {% endif %} {% if products %}
+    <table>
       <tr>
         <th>Name</th>
         <th>Category</th>
-        <th>Price ($)</th>
+        <th>Price</th>
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Products</title>
+          </head>
+          <body>
+            {% if error %}
+            <p>{{ error }}</p>
+            {% endif %} {% if products %}
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+              </tr>
+              {% for p in products %}
+              <tr>
+                <td>{{ p["name"] }}</td>
+                <td>{{ p["category"] }}</td>
+                <td>{{ p["price"] }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+            {% endif %}
+          </body>
+        </html>
       </tr>
       {% for p in products %}
       <tr>
@@ -29,6 +47,6 @@
       </tr>
       {% endfor %}
     </table>
-    {% endif %} {% include "footer.html" %}
+    {% endif %}
   </body>
 </html>
